@@ -1,0 +1,27 @@
+extends _layout
+
+block head-pack
+	style.
+		body {
+			background-color: whitesmoke;
+		}
+
+block body-pack
+	.container.text-center.mt-5
+		.row
+			.col-md-4
+			.col-md-4
+				h1.mb-5.mt-5 Proxy Notes API
+				form.mb-5.form-signin(action="/api/auth/signin" method="POST")
+					h3.mb-3.font-weight-normal Sign In
+					.form-group
+						label.sr-only(for="username")
+						input#username.form-control(name="username" type="email" placeholder="Email")
+					.form-group
+						label.sr-only(for="password")
+						input#password.form-control(name="password" type="password" placeholder="Password")
+					button.btn.btn-primary(type="submit") Sign in
+			.col-md-4
+	
+block extra-scripts
+	script(src="js/signin.js")

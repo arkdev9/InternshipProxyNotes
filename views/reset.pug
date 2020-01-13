@@ -1,0 +1,30 @@
+extends _layout
+
+block head-pack
+	style.
+		body {
+			background-color: whitesmoke;
+		}
+
+block body-pack
+	.container.text-center.mt-5
+		.row
+			.col-md-4
+			.col-md-4
+				h1.mb-5.mt-5 Proxy Notes API
+				form.mb-5.form-signin(action="/api/auth/reset" method="POST")
+					h3.mb-3.font-weight-normal Reset Password
+					.form-group
+						label.sr-only(for="username")
+						input.form-control(name="username" type="email" placeholder="Email")
+					.form-group
+						label.sr-only(for="password")
+						input#pass.form-control(name="password" type="password" placeholder="Password")
+					.form-group
+						label.sr-only(for="password")
+						input#retypePass.form-control(type="text" placeholder="Re-type new password")
+					.form-group
+						label.sr-only(for="code")
+						input.form-control(name="code" type="text" maxlength='4' placeholder="Verification code")
+					button.btn.btn-primary(type="submit") Reset Password
+			.col-md-4

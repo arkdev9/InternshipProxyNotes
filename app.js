@@ -3,9 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
+var apiRouter = require('./routes/api');
 var app = express();
+
+// DB Connect
+mongoose.connect('mongodb+srv://alphaButtFucker:sullichiku@laniakea-1hblj.mongodb.net/students?retryWrites=true', {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+}).then((db) => {
+	console.log("connected to laniakea");
+}).catch((reason) => {
+	console.log("failed to connect to laniakea -> " + reason);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
