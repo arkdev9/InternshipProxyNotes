@@ -1,0 +1,16 @@
+extends _layout
+
+block body-pack
+	.container.mt-5.mb-5
+		.row
+			.col-md-4
+				h3 Your uploaded videos
+
+			.col-md-8
+				h3 Upload a video
+				form(action="/api/media/upload" method="POST")
+					.form-group
+						input.form-control(type="text" placeholder="File name")
+					.form-group
+						input.form-control-file(type="file") 
+					button.btn.btn-primary(type="submit") Upload

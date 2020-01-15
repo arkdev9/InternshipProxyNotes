@@ -1,21 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
+var unprotectedUrls = [
+	'/api/auth/signout',
+	'/api/auth/signin',
+	'/api/auth/signup',
+	'/api/auth/reset',
+	'/api/signup',
+	'/api/forgot',
+	'/api'
+];
+router.use((req, res, next) => {
+	if (!req.session.signedIn) {
+		if (unprotectedUrls.includes(req.originalUrl)) next();
+		else res.redirect('/api');
+	} else {
+		next();
+	}
+});
 
 router.get('/', (req, res) => {
-	res.render('signup', { title: 'Sign up' });
+	res.render('index', { title: 'Home | Proxy Notes API' });
 });
-
-router.get('/signin', (req, res) => {
-	res.render('signin', { title: 'Sign in' });
-});
-
-router.get('/forgot', (req, res) => {
-	res.render('forgot', { title: 'Forgot password' });
-});
-
-router.get('/reset', (req, res) => {
-	res.render('reset', { title: 'Reset password' });
-})
 
 module.exports = router;
