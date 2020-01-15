@@ -7,8 +7,9 @@ var unprotectedUrls = [
 	'/api/auth/signin',
 	'/api/auth/signup',
 	'/api/auth/reset',
-	'/api/signup',
+	'/api/auth/forgot',
 	'/api/forgot',
+	'/api/signup',
 	'/api'
 ];
 router.use((req, res, next) => {
