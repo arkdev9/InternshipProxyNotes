@@ -96,7 +96,7 @@ router.post('/forgot', checkSignedIn, (req, res) => {
 					var body = '<h2>If you received this email, you previously' +
 						' registered and requested to reset your password</h2>' +
 						'<p>Enter this code when prompted: ' + code + ' at this' +
-						'<a href="http://localhost:3000/reset/"> link.</a></p>';
+						'<a href="http://proxy-notes-internship.herokuapp.com/api/reset/"> link.</a></p>';
 					const mailOptions = {
 						from: "rogueDev21@gmail.com",
 						to: user.username,
