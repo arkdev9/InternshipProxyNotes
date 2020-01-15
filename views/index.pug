@@ -5,12 +5,14 @@ block body-pack
 		.row
 			.col-md-4
 				h3 Your uploaded videos
-
+				ul.list-group
+					each video in videos
+						li.list-group-item=video.path
 			.col-md-8
 				h3 Upload a video
-				form(action="/api/media/upload" method="POST")
+				form(action="/api/media/upload" method="POST" enctype="multipart/form-data")
 					.form-group
-						input.form-control(type="text" placeholder="File name")
+						input.form-control(type="text" placeholder="File name" name="name")
 					.form-group
-						input.form-control-file(type="file") 
+						input.form-control-file(type="file" name="video") 
 					button.btn.btn-primary(type="submit") Upload

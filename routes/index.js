@@ -1,4 +1,5 @@
 var express = require('express');
+var User = require('../models/User');
 var router = express.Router();
 
 var unprotectedUrls = [
@@ -20,7 +21,15 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-	res.render('index', { title: 'Home | Proxy Notes API' });
+	User.findById(req.session.user._id, (err, user) => {
+		if (err) {
+			console.error(err);
+			res.send("Something went wrong\n" + err);
+		} else {
+			console.log(JSON.stringify(user));
+			res.render('index', { title: 'Home | Proxy Notes API', videos: user.videos });
+		}
+	});
 });
 
 module.exports = router;
