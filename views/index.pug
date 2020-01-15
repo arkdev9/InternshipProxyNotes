@@ -3,12 +3,7 @@ extends _layout
 block body-pack
 	.container.mt-5.mb-5
 		.row
-			.col-md-4
-				h3 Your uploaded videos
-				ul.list-group
-					each video in videos
-						li.list-group-item=video.path
-			.col-md-8
+			.col
 				h3 Upload a video
 				form(action="/api/media/upload" method="POST" enctype="multipart/form-data")
 					.form-group
@@ -16,3 +11,10 @@ block body-pack
 					.form-group
 						input.form-control-file(type="file" name="video") 
 					button.btn.btn-primary(type="submit") Upload
+
+		.row
+			.col
+				each video in videos
+					p=video.name
+					- var src = '/static/videos/' + video.path.split('/').pop();
+					video(src=src type="video/mp4" controls width="500")
