@@ -8,6 +8,7 @@ var unprotectedUrls = [
 	'/api/auth/signup',
 	'/api/auth/reset',
 	'/api/auth/forgot',
+	'/api/reset',
 	'/api/forgot',
 	'/api/signup',
 	'/api'
