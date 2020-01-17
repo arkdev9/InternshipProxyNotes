@@ -13,7 +13,7 @@ var mediaRouter = require('./routes/media');
 var app = express();
 
 // DB Connect
-mongoose.connect('mongodb+srv://alphaButtFucker:sullichiku@laniakea-1hblj.mongodb.net/students?retryWrites=true', {
+mongoose.connect(//Connect URL//, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 }).then((db) => {
